@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physiotherapy Clinic – Dr. Aarti Sharma (PT)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+–blue: #1565C0;
+–blue-dark: #0D47A1;
+–blue-light: #1E88E5;
+–green: #2E7D32;
+–green-light: #43A047;
+–white: #FFFFFF;
+–off-white: #F4F8FF;
+–text: #1a1a2e;
+–text-muted: #546e8a;
+–border: #d0e4f7;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+font-family: ‘DM Sans’, sans-serif;
+color: var(–text);
+background: var(–white);
+overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+background: rgba(255,255,255,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(–border);
+display: flex; align-items: center; justify-content: space-between;
+padding: 0 5%;
+height: 70px;
+}
+.nav-logo {
+display: flex; align-items: center; gap: 10px;
+font-family: ‘Playfair Display’, serif;
+font-size: 1.15rem; font-weight: 700;
+color: var(–blue-dark);
+text-decoration: none;
+}
+.nav-logo .cross {
+width: 38px; height: 38px;
+background: linear-gradient(135deg, var(–blue), var(–green-light));
+border-radius: 50%;
+display: flex; align-items: center; justify-content: center;
+color: white; font-size: 1.2rem; font-weight: 900;
+flex-shrink: 0;
+}
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+text-decoration: none; color: var(–text-muted);
+font-size: 0.88rem; font-weight: 500; letter-spacing: 0.03em;
+transition: color 0.2s;
+}
+.nav-links a:hover { color: var(–blue); }
+.nav-cta {
+background: var(–blue);
+color: white !important;
+padding: 0.5rem 1.2rem;
+border-radius: 50px;
+font-weight: 600 !important;
+transition: background 0.2s !important;
+}
+.nav-cta:hover { background: var(–blue-dark) !important; }
+
+/* ── HERO ── */
+#hero {
+min-height: 100vh;
+background: linear-gradient(145deg, #e8f1ff 0%, #f4fff5 60%, #e0f7fa 100%);
+display: flex; align-items: center;
+padding: 100px 5% 60px;
+position: relative; overflow: hidden;
+}
+#hero::before {
+content: ‘’;
+position: absolute; top: -80px; right: -80px;
+width: 500px; height: 500px;
+background: radial-gradient(circle, rgba(21,101,192,0.1) 0%, transparent 70%);
+border-radius: 50%;
+}
+#hero::after {
+content: ‘’;
+position: absolute; bottom: -60px; left: -60px;
+width: 350px; height: 350px;
+background: radial-gradient(circle, rgba(46,125,50,0.08) 0%, transparent 70%);
+border-radius: 50%;
+}
+.hero-inner {
+max-width: 1200px; margin: 0 auto;
+display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+align-items: center; width: 100%;
+}
+.hero-tag {
+display: inline-flex; align-items: center; gap: 6px;
+background: rgba(21,101,192,0.1); color: var(–blue);
+font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em;
+text-transform: uppercase; padding: 6px 14px; border-radius: 50px;
+margin-bottom: 1.2rem;
+animation: fadeUp 0.6s ease both;
+}
+.hero-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(2.4rem, 4vw, 3.6rem);
+font-weight: 900; line-height: 1.1;
+color: var(–blue-dark);
+animation: fadeUp 0.6s 0.1s ease both;
+}
+.hero-title span { color: var(–green); }
+.hero-tagline {
+font-size: 1.1rem; color: var(–text-muted);
+margin: 1rem 0 0.3rem;
+font-style: italic;
+animation: fadeUp 0.6s 0.2s ease both;
+}
+.hero-exp {
+font-size: 0.9rem; color: var(–blue);
+font-weight: 600; margin-bottom: 1.8rem;
+animation: fadeUp 0.6s 0.25s ease both;
+}
+.hero-btns {
+display: flex; gap: 1rem; flex-wrap: wrap;
+animation: fadeUp 0.6s 0.3s ease both;
+}
+.btn-primary {
+background: linear-gradient(135deg, var(–blue), var(–blue-light));
+color: white; padding: 0.85rem 2rem;
+border-radius: 50px; font-weight: 600; font-size: 0.95rem;
+text-decoration: none; border: none; cursor: pointer;
+box-shadow: 0 8px 24px rgba(21,101,192,0.3);
+transition: transform 0.2s, box-shadow 0.2s;
+display: inline-block;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(21,101,192,0.4); }
+.btn-secondary {
+background: white; color: var(–blue);
+padding: 0.85rem 2rem; border-radius: 50px;
+font-weight: 600; font-size: 0.95rem;
+text-decoration: none; border: 2px solid var(–blue);
+cursor: pointer; transition: all 0.2s;
+display: inline-block;
+}
+.btn-secondary:hover { background: var(–blue); color: white; }
+
+.hero-card {
+background: white;
+border-radius: 24px;
+padding: 2.5rem;
+box-shadow: 0 20px 60px rgba(21,101,192,0.12);
+animation: fadeUp 0.6s 0.15s ease both;
+position: relative;
+}
+.hero-card .home-badge {
+position: absolute; top: -14px; left: 24px;
+background: var(–green); color: white;
+font-size: 0.75rem; font-weight: 600;
+padding: 6px 14px; border-radius: 50px;
+letter-spacing: 0.04em;
+}
+.hero-stats {
+display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+margin-bottom: 1.5rem;
+}
+.stat-box {
+background: var(–off-white);
+border-radius: 14px; padding: 1.1rem;
+text-align: center;
+}
+.stat-box .num {
+font-family: ‘Playfair Display’, serif;
+font-size: 2rem; font-weight: 900;
+color: var(–blue-dark);
+}
+.stat-box .label { font-size: 0.75rem; color: var(–text-muted); font-weight: 500; margin-top: 2px; }
+.offer-strip {
+background: linear-gradient(135deg, var(–green), #66BB6A);
+color: white; border-radius: 12px;
+padding: 0.9rem 1.2rem;
+font-size: 0.88rem; font-weight: 600;
+text-align: center; letter-spacing: 0.02em;
+}
+.offer-strip span { font-size: 1.2rem; font-weight: 900; }
+
+/* ── SECTIONS COMMON ── */
+section { padding: 90px 5%; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label {
+font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em;
+text-transform: uppercase; color: var(–green);
+margin-bottom: 0.5rem;
+}
+.section-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(1.8rem, 3vw, 2.6rem);
+font-weight: 800; color: var(–blue-dark);
+line-height: 1.2; margin-bottom: 1rem;
+}
+.section-sub { color: var(–text-muted); font-size: 1rem; max-width: 560px; line-height: 1.7; }
+
+/* ── SERVICES ── */
+#services { background: var(–off-white); }
+.services-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 1.2rem; margin-top: 2.5rem;
+}
+.service-card {
+background: white; border-radius: 18px;
+padding: 1.6rem 1.4rem;
+border: 1px solid var(–border);
+transition: transform 0.2s, box-shadow 0.2s;
+display: flex; align-items: flex-start; gap: 0.9rem;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(21,101,192,0.12); }
+.service-icon {
+width: 42px; height: 42px; flex-shrink: 0;
+background: linear-gradient(135deg, var(–blue), var(–blue-light));
+border-radius: 12px;
+display: flex; align-items: center; justify-content: center;
+font-size: 1.1rem;
+}
+.service-name { font-weight: 600; font-size: 0.95rem; color: var(–text); margin-bottom: 3px; }
+.service-desc { font-size: 0.78rem; color: var(–text-muted); line-height: 1.5; }
+.home-visit-banner {
+margin-top: 2rem;
+background: linear-gradient(135deg, var(–green), #66BB6A);
+color: white; border-radius: 18px;
+padding: 1.4rem 2rem;
+display: flex; align-items: center; justify-content: space-between;
+flex-wrap: wrap; gap: 1rem;
+font-weight: 600; font-size: 1rem;
+}
+.home-visit-banner .icon { font-size: 1.5rem; }
+
+/* ── ABOUT ── */
+#about { background: white; }
+.about-inner {
+display: grid; grid-template-columns: 1fr 1.3fr;
+gap: 4rem; align-items: center;
+}
+.about-visual {
+background: linear-gradient(145deg, #e8f1ff, #f0fff4);
+border-radius: 24px; padding: 2.5rem;
+text-align: center; position: relative;
+}
+.about-avatar {
+width: 120px; height: 120px;
+background: linear-gradient(135deg, var(–blue), var(–green-light));
+border-radius: 50%; margin: 0 auto 1rem;
+display: flex; align-items: center; justify-content: center;
+font-size: 3rem; color: white; font-weight: 900;
+font-family: ‘Playfair Display’, serif;
+}
+.about-name {
+font-family: ‘Playfair Display’, serif;
+font-size: 1.5rem; font-weight: 800; color: var(–blue-dark);
+}
+.about-creds { font-size: 0.85rem; color: var(–text-muted); margin-top: 4px; }
+.about-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.2rem; justify-content: center; }
+.chip {
+background: white; border: 1px solid var(–border);
+border-radius: 50px; padding: 5px 14px;
+font-size: 0.78rem; font-weight: 500; color: var(–blue);
+}
+.about-text p { color: var(–text-muted); line-height: 1.8; margin-bottom: 1rem; font-size: 0.97rem; }
+.about-text strong { color: var(–text); }
+
+/* ── BOOKING ── */
+#booking { background: var(–off-white); }
+.booking-wrap {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 3rem; margin-top: 2.5rem;
+}
+.booking-form {
+background: white; border-radius: 22px;
+padding: 2.2rem; border: 1px solid var(–border);
+box-shadow: 0 8px 32px rgba(21,101,192,0.08);
+}
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { margin-bottom: 1.1rem; }
+.form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(–text); margin-bottom: 6px; }
+.form-group input, .form-group select, .form-group textarea {
+width: 100%; padding: 0.7rem 1rem;
+border: 1.5px solid var(–border);
+border-radius: 10px; font-family: ‘DM Sans’, sans-serif;
+font-size: 0.9rem; color: var(–text);
+background: var(–off-white);
+transition: border-color 0.2s, box-shadow 0.2s;
+outline: none;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+border-color: var(–blue); box-shadow: 0 0 0 3px rgba(21,101,192,0.1);
+}
+.form-group textarea { resize: vertical; min-height: 90px; }
+.submit-btn {
+width: 100%; background: linear-gradient(135deg, var(–blue), var(–blue-light));
+color: white; border: none; padding: 1rem;
+border-radius: 12px; font-family: ‘DM Sans’, sans-serif;
+font-size: 1rem; font-weight: 700; cursor: pointer;
+transition: transform 0.2s, box-shadow 0.2s;
+box-shadow: 0 8px 24px rgba(21,101,192,0.25);
+letter-spacing: 0.02em;
+}
+.submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(21,101,192,0.35); }
+.booking-info { display: flex; flex-direction: column; gap: 1.2rem; }
+.info-card {
+background: white; border-radius: 18px; padding: 1.5rem;
+border: 1px solid var(–border);
+display: flex; align-items: flex-start; gap: 1rem;
+}
+.info-icon {
+width: 46px; height: 46px; flex-shrink: 0;
+border-radius: 12px; display: flex; align-items: center; justify-content: center;
+font-size: 1.3rem;
+}
+.info-icon.blue { background: rgba(21,101,192,0.1); }
+.info-icon.green { background: rgba(46,125,50,0.1); }
+.info-card h4 { font-weight: 700; font-size: 0.92rem; color: var(–text); margin-bottom: 3px; }
+.info-card p { font-size: 0.83rem; color: var(–text-muted); line-height: 1.5; }
+
+/* ── TESTIMONIALS ── */
+#testimonials { background: white; }
+.testi-grid {
+display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+gap: 1.5rem; margin-top: 2.5rem;
+}
+.testi-card {
+background: var(–off-white); border-radius: 20px;
+padding: 1.8rem; border: 1px solid var(–border);
+transition: transform 0.2s;
+}
+.testi-card:hover { transform: translateY(-3px); }
+.stars { color: #FFC107; font-size: 1rem; margin-bottom: 0.8rem; letter-spacing: 2px; }
+.testi-text { font-size: 0.92rem; color: var(–text-muted); line-height: 1.75; font-style: italic; }
+.testi-author { margin-top: 1.2rem; display: flex; align-items: center; gap: 0.7rem; }
+.author-avatar {
+width: 38px; height: 38px; border-radius: 50%;
+background: linear-gradient(135deg, var(–blue), var(–green-light));
+display: flex; align-items: center; justify-content: center;
+color: white; font-weight: 700; font-size: 0.85rem;
+flex-shrink: 0;
+}
+.author-name { font-weight: 700; font-size: 0.88rem; color: var(–text); }
+.author-type { font-size: 0.75rem; color: var(–text-muted); }
+
+/* ── CONTACT ── */
+#contact {
+background: linear-gradient(135deg, var(–blue-dark) 0%, #1565C0 60%, var(–green) 150%);
+color: white;
+}
+#contact .section-label { color: #90CAF9; }
+#contact .section-title { color: white; }
+#contact .section-sub { color: rgba(255,255,255,0.7); }
+.contact-grid {
+display: grid; grid-template-columns: 1fr 1fr;
+gap: 3rem; margin-top: 2.5rem; align-items: start;
+}
+.contact-item { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; }
+.contact-icon {
+width: 44px; height: 44px; flex-shrink: 0;
+background: rgba(255,255,255,0.15); border-radius: 12px;
+display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+}
+.contact-label { font-size: 0.78rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
+.contact-val { font-size: 1.05rem; font-weight: 600; color: white; }
+.contact-form {
+background: rgba(255,255,255,0.1);
+backdrop-filter: blur(10px);
+border-radius: 22px; padding: 2rem;
+border: 1px solid rgba(255,255,255,0.2);
+}
+.contact-form .form-group label { color: rgba(255,255,255,0.8); }
+.contact-form input, .contact-form textarea {
+background: rgba(255,255,255,0.15);
+border-color: rgba(255,255,255,0.2);
+color: white;
+}
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.4); }
+.contact-form input:focus, .contact-form textarea:focus {
+border-color: rgba(255,255,255,0.6);
+box-shadow: 0 0 0 3px rgba(255,255,255,0.1);
+background: rgba(255,255,255,0.2);
+}
+.contact-submit {
+width: 100%; background: white; color: var(–blue-dark);
+border: none; padding: 1rem; border-radius: 12px;
+font-family: ‘DM Sans’, sans-serif; font-size: 1rem;
+font-weight: 700; cursor: pointer;
+transition: all 0.2s; letter-spacing: 0.02em;
+}
+.contact-submit:hover { background: #e8f1ff; transform: translateY(-2px); }
+
+/* ── FOOTER ── */
+footer {
+background: #0a1628; color: rgba(255,255,255,0.6);
+text-align: center; padding: 2rem 5%;
+font-size: 0.82rem;
+}
+footer strong { color: white; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(22px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+.hero-inner, .about-inner, .booking-wrap, .contact-grid { grid-template-columns: 1fr; }
+.hero-card { display: none; }
+.nav-links { display: none; }
+.form-row { grid-template-columns: 1fr; }
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="cross">✚</div>
+    <span>Dr. Aarti Sharma</span>
+  </a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="#booking" class="nav-cta">Book Appointment</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-tag">✦ Physiotherapy Clinic</div>
+      <h1 class="hero-title">
+        Because Every<br><span>Body Deserves</span><br>Care.
+      </h1>
+      <p class="hero-tagline">"Restoring movement, rebuilding lives."</p>
+      <p class="hero-exp">🏅 Dr. Aarti Sharma (PT) · 10+ Years Experience</p>
+      <div class="hero-btns">
+        <a href="#booking" class="btn-primary">Book Appointment</a>
+        <a href="tel:8377878153" class="btn-secondary">📞 Call Now</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="home-badge">🏠 Home Visits Available</div>
+      <div class="hero-stats">
+        <div class="stat-box">
+          <div class="num">10+</div>
+          <div class="label">Years Experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">12</div>
+          <div class="label">Specialties</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">500+</div>
+          <div class="label">Patients Helped</div>
+        </div>
+        <div class="stat-box">
+          <div class="num">4.9★</div>
+          <div class="label">Patient Rating</div>
+        </div>
+      </div>
+      <div class="offer-strip">
+        🎉 Inaugural Offer — <span>10% OFF</span> First Session
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What We Treat</p>
+    <h2 class="section-title">Our Specialised Services</h2>
+    <p class="section-sub">Comprehensive physiotherapy care tailored to your needs — from acute injuries to long-term rehabilitation.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">🤲</div>
+        <div>
+          <div class="service-name">Manual Therapy</div>
+          <div class="service-desc">Hands-on techniques to reduce pain and restore mobility.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏋️</div>
+        <div>
+          <div class="service-name">Rehabilitation</div>
+          <div class="service-desc">Structured recovery programs post-injury or surgery.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚡</div>
+        <div>
+          <div class="service-name">Electrotherapy</div>
+          <div class="service-desc">TENS, ultrasound and other modalities for pain relief.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧘</div>
+        <div>
+          <div class="service-name">Exercise Therapy</div>
+          <div class="service-desc">Customised exercise plans for strength and flexibility.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧠</div>
+        <div>
+          <div class="service-name">Rediculopathy</div>
+          <div class="service-desc">Treatment for nerve root compression and radiating pain.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏠</div>
+        <div>
+          <div class="service-name">Home Care</div>
+          <div class="service-desc">Convenient physiotherapy sessions at your home.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧍</div>
+        <div>
+          <div class="service-name">Posture Correction</div>
+          <div class="service-desc">Assessment and correction of postural imbalances.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧬</div>
+        <div>
+          <div class="service-name">Stroke & Paralysis Care</div>
+          <div class="service-desc">Neuro-rehabilitation for stroke recovery and mobility.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚶</div>
+        <div>
+          <div class="service-name">Gait Correction</div>
+          <div class="service-desc">Analysis and improvement of walking patterns.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">👴</div>
+        <div>
+          <div class="service-name">Geriatric Care</div>
+          <div class="service-desc">Specialised care for elderly patients and age-related conditions.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🩺</div>
+        <div>
+          <div class="service-name">Pre & Post Operative Care</div>
+          <div class="service-desc">Preparation and recovery support around surgical procedures.</div>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🦴</div>
+        <div>
+          <div class="service-name">All Joint & Spine Care</div>
+          <div class="service-desc">Comprehensive management of joint and spinal disorders.</div>
+        </div>
+      </div>
+    </div>
+    <div class="home-visit-banner">
+      <div style="display:flex;align-items:center;gap:0.8rem;">
+        <span class="icon">🏠</span>
+        <span>We also provide <strong>Home Visit Services</strong> — get expert physiotherapy at your doorstep!</span>
+      </div>
+      <a href="#booking" style="background:white;color:#2E7D32;padding:0.7rem 1.5rem;border-radius:50px;font-weight:700;text-decoration:none;font-size:0.9rem;white-space:nowrap;">Book Home Visit</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="section-inner">
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-avatar">A</div>
+        <div class="about-name">Dr. Aarti Sharma</div>
+        <div class="about-creds">PT · Licensed Physiotherapist</div>
+        <div class="about-chips">
+          <span class="chip">10+ Years Exp.</span>
+          <span class="chip">Home Visits</span>
+          <span class="chip">Neuro Rehab</span>
+          <span class="chip">Sports PT</span>
+          <span class="chip">Geriatric Care</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <p class="section-label">About the Doctor</p>
+        <h2 class="section-title">Your Health is Our Priority</h2>
+        <p>Dr. Aarti Sharma is a highly qualified and experienced physiotherapist with <strong>over 10 years of dedicated practice</strong>. Her patient-first philosophy — <em>"Because Every Body Deserves Care"</em> — is the foundation of everything she does at the clinic.</p>
+        <p>She specialises in a broad spectrum of conditions including neurological rehabilitation, musculoskeletal disorders, post-operative recovery, and geriatric care. Her approach combines evidence-based techniques with personalised attention to achieve the best outcomes for each patient.</p>
+        <p>The clinic is conveniently located at <strong>Tower-21, 1904, Nirala Estate-2</strong>, and Dr. Aarti also offers <strong>home visits</strong> for patients who require care in the comfort of their own home.</p>
+        <a href="tel:8377878153" class="btn-primary" style="margin-top:1rem;display:inline-block;">📞 8377878153</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+
+<section id="booking">
+  <div class="section-inner">
+    <p class="section-label">Schedule Your Visit</p>
+    <h2 class="section-title">Book an Appointment</h2>
+    <p class="section-sub">Fill in the form below and we'll confirm your appointment shortly. First session includes a <strong>10% inaugural discount</strong>.</p>
+    <div class="booking-wrap">
+      <div class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Preferred Date *</label>
+            <input type="date">
+          </div>
+          <div class="form-group">
+            <label>Preferred Time *</label>
+            <input type="time">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select>
+            <option>Select a service...</option>
+            <option>Manual Therapy</option>
+            <option>Rehabilitation</option>
+            <option>Electrotherapy</option>
+            <option>Exercise Therapy</option>
+            <option>Rediculopathy</option>
+            <option>Home Care Visit</option>
+            <option>Posture Correction</option>
+            <option>Stroke / Paralysis Care</option>
+            <option>Gait Correction</option>
+            <option>Geriatric Care</option>
+            <option>Pre & Post Operative Care</option>
+            <option>Joint & Spine Care</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Describe your condition (optional)</label>
+          <textarea placeholder="Brief description of your symptoms or condition..."></textarea>
+        </div>
+        <button class="submit-btn" onclick="alert('Thank you! We will contact you shortly to confirm your appointment.')">
+          ✦ Confirm Appointment
+        </button>
+      </div>
+      <div class="booking-info">
+        <div class="info-card">
+          <div class="info-icon blue">📍</div>
+          <div>
+            <h4>Clinic Location</h4>
+            <p>Tower-21, 1904, Nirala Estate-2<br>Visit us during working hours</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon blue">📞</div>
+          <div>
+            <h4>Call to Book</h4>
+            <p>8377878153<br>Available Mon–Sat, 9AM – 7PM</p>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-icon green">🏠</div>
+          <div>
+            <h4>Home Visit Available</h4>
+            <p>Can't make it to the clinic? We come to you. Home visits available on request.</p>
+          </div>
+        </div>
+        <div class="info-card" style="background:linear-gradient(135deg,#e8f4fd,#e8f9ee);">
+          <div class="info-icon green">🎉</div>
+          <div>
+            <h4>Inaugural Offer — 10% Off</h4>
+            <p>New patients receive <strong>10% discount</strong> on their first session. Mention when booking!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section id="testimonials">
+  <div class="section-inner">
+    <p class="section-label">Patient Stories</p>
+    <h2 class="section-title">What Our Patients Say</h2>
+    <p class="section-sub">Real recoveries, real results. Here's what patients say about their experience with Dr. Aarti Sharma.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"Dr. Aarti's manual therapy sessions completely resolved my chronic lower back pain. After years of suffering, I finally feel like myself again. Highly recommend her to anyone in pain."</p>
+        <div class="testi-author">
+          <div class="author-avatar">RK</div>
+          <div>
+            <div class="author-name">Rajesh Kumar</div>
+            <div class="author-type">Lower Back Pain Patient</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"After my knee surgery, I was worried about recovery. Dr. Aarti's post-operative rehab programme was exceptional. Her attention to detail and encouraging approach made all the difference."</p>
+        <div class="testi-author">
+          <div class="author-avatar">SP</div>
+          <div>
+            <div class="author-name">Sunita Patel</div>
+            <div class="author-type">Post-Op Knee Recovery</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-text">"My elderly mother had difficulty walking after a fall. Dr. Aarti visited our home regularly and her geriatric care was outstanding. Mom is back on her feet and so much happier!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">AM</div>
+          <div>
+            <div class="author-name">Anil Mehta</div>
+            <div class="author-type">Home Visit Patient's Family</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+  <div class="section-inner">
+    <p class="section-label">Get in Touch</p>
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-sub">Ready to start your recovery journey? Reach out today and take the first step.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Address</div>
+            <div class="contact-val">Tower-21, 1904, Nirala Estate-2</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-label">Phone</div>
+            <div class="contact-val"><a href="tel:8377878153" style="color:white;">8377878153</a></div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-label">Working Hours</div>
+            <div class="contact-val">Mon – Sat: 9:00 AM – 7:00 PM</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🏠</div>
+          <div>
+            <div class="contact-label">Home Visits</div>
+            <div class="contact-val">Available on Request</div>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label>Phone / Email</label>
+          <input type="text" placeholder="How can we reach you?">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="How can Dr. Aarti help you?" style="min-height:100px;"></textarea>
+        </div>
+        <button class="contact-submit" onclick="alert('Message sent! We will get back to you soon.')">Send Message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <p><strong>Physiotherapy Clinic – Dr. Aarti Sharma (PT)</strong></p>
+  <p style="margin-top:6px;">Tower-21, 1904, Nirala Estate-2 · 📞 8377878153 · "Because Every Body Deserves Care."</p>
+  <p style="margin-top:8px;font-size:0.75rem;">© 2026 Dr. Aarti Sharma Physiotherapy Clinic. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
